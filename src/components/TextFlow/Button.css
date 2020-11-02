@@ -1,0 +1,17 @@
+.buttonSend {
+	display: inline-block;
+	height: 45px;
+	background-color: #fff;
+	margin-left: auto;
+	width: 70px;
+	color: #be79df;
+	font-weight: bold;
+	border-radius: 0 0 20px 0;
+	border: none;
+	text-decoration: none;
+}
+
+.buttonSend:hover {
+	background-color: #be79df;
+	color: #fff;
+}

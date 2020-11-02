@@ -1,0 +1,21 @@
+.footerContainer {
+	border: 1px solid #CBC9C9;
+	border-radius:  0 0 20px 20px;
+	margin: auto;
+	background-color: #FFF;
+	display: flex;
+}
+
+.inputWrapper {
+	overflow: hidden;
+	border-radius: 0 0 0 20px;
+}
+
+.inputText {
+	outline: none;
+	border: none;
+	padding-left: 20px;
+	height: 100%;
+	width: auto;
+	font-size: 13px;
+}

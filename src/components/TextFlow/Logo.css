@@ -1,0 +1,11 @@
+.logoHeader {
+	width: 86px;
+	margin: 0 0 0 8px;
+}
+
+.imgHeader {
+	display: block;
+	margin: 15px 0 0 0;
+	max-width: 100%;
+	height: auto;
+}

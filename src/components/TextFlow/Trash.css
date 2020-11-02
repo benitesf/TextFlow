@@ -1,0 +1,10 @@
+.trashHeader {
+	margin: 0 10px 0 10px;
+	width: 30px;
+	border-left: 1px solid #CBC9C9;
+	border-right: 1px solid #CBC9C9;
+}
+
+.trashImg {
+	margin: 15px 0 0 0;
+}

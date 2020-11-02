@@ -1,0 +1,22 @@
+.headerContainer {
+	border: 1px solid #CBC9C9;
+	border-radius: 20px 20px 0 0;
+	margin: auto;
+	background-color: #FFF;
+	display: flex;
+}
+
+.itemHeader {
+	display: inline-block;
+	height: 40px;
+	text-align: center;
+}
+
+.handCursor {
+	cursor: pointer;
+}
+
+.optionsHeader {
+	border: 1px solid blue;
+}
+
