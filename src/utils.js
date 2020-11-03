@@ -19,21 +19,19 @@ export function init() {
 		});
 	});
 
-	chrome.runtime.onConnect.addListener(port => {
-  	port.onMessage.addListener(msg => {
-    	// Handle message however you want
-  	});
-	});
-
 	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		switch(request.handler) {
 			case 'translate':
-				translate(request.text, sendResponse)
+				translate(request.text, (response) => {
+					chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+						const port = chrome.tabs.connect(tabs[0].id);
+						port.postMessage({ handler: "translated", response: response })
+					});
+				});
 				break;
 			case 'setCurrLang':
 				setCurrentPairLang(request.lang);
-				sendResponse('changed')
-				console.log('[background] Change to: ', request.lang);
+				break
 			default:
 				console.error('Unknown handler');
 				console.log('Unknown handler');
@@ -45,7 +43,10 @@ export function init() {
 	chrome.contextMenus.onClicked.addListener((info, tab) => {
 		if (info.menuItemId == "translateContextMenu") {
 			chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-				chrome.tabs.sendMessage(tabs[0].id, { handler: "contextMenuTranslate" }, (response) => {});
+				const port = chrome.tabs.connect(tabs[0].id);
+				port.postMessage({ handler: "contextMenuTranslate" });
+				//chrome.tabs.sendMessage(tabs[0].id, { handler: "contextMenuTranslate" }, (response) => {
+				//});
 			});
 		}
 	});

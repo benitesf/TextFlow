@@ -2,8 +2,6 @@ import { getApiConfig } from './storage';
 import $ from 'jquery';
 
 export function translate(text, sendResponse) {
-	console.log('Text: ', text);
-
 	const cfg = getApiConfig();
 	let ukey = '';
 	const mkey = cfg.mkey;

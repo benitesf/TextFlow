@@ -5,71 +5,13 @@ export function sendButton(e) {
 	var text = inputText.value;
 	inputText.value = '';
 
-	return new Promise((resolve, reject) => {
-
-		chrome.runtime.sendMessage({handler: 'translate', text: text}, response => {
-		
-			/*if (response.complete) {
-				console.log('Complete')
-				resolve();
-			}	else {
-				console.log('something wrong');
-				reject('something wrong');
-			}*/
-
-			try {
-					const parsed = JSON.parse(response);
-				
-					if (!parsed.translated) {
-						return
-					}
-
-					if (parsed.translated.length == 0) {
-						return
-					}
-
-					var event = new CustomEvent('addMessage', {
-						detail: {
-							message: parsed.translated
-						}
-					});
-
-					window.dispatchEvent(event);
-				}
-				catch(error) {
-					console.log('Ocurred an error while parsing JSON');
-				}
-		});
-	});
+	chrome.runtime.sendMessage({handler: 'translate', text: text}, () => {});
+	return true
 }
 
 export function sendToTranslateFromSelection(text) {
-	return new Promise((resolve, reject) => {
-		chrome.runtime.sendMessage({handler: 'translate', text: text}, response => {
-			try {
-					const parsed = JSON.parse(response);
-				
-					if (!parsed.translated) {
-						return
-					}
-
-					if (parsed.translated.length == 0) {
-						return
-					}
-
-					var event = new CustomEvent('addMessage', {
-						detail: {
-							message: parsed.translated
-						}
-					});
-
-					window.dispatchEvent(event);
-				}
-				catch(error) {
-					console.log('Ocurred an error while parsing JSON');
-				}
-		});
-	});
+	chrome.runtime.sendMessage({handler: 'translate', text: text}, () => {});
+	return true
 }
 
 export function cleanTextRoom(e) {
@@ -79,11 +21,7 @@ export function cleanTextRoom(e) {
 
 export function changeLanguage(lang) {
 	setCurrentPairLang(lang);
-	
-	return new Promise((resolve, reject) => {
-		chrome.runtime.sendMessage({handler: 'setCurrLang', lang: lang}, response => {
-		});
-	});
+	chrome.runtime.sendMessage({handler: 'setCurrLang', lang: lang}, () => {});
 }
 
 export function focusInput() {
