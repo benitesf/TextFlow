@@ -10,7 +10,7 @@ var Logo = function statelessFunctionComponentClass(props) {
 			className={classNames(styles.logoHeader, headerStyles.itemHeader, headerStyles.handCursor)}
 			onClick={() => {
 				window.open(
-					'https://github.com/benitesf',
+					'https://github.com/benitesf/TextFlow/tree/master',
 					'_blank'
 				);
 			}}
